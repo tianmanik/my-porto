@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Andreas C M — Backend & Fullstack Engineer</title>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="assets/images/icon-1.png" />
+    <meta 
+      name="description" 
+      content="Portfolio of Andreas Cristian Manik, a backend and fullstack engineer specializing in scalable enterprise systems, Spring Boot, and modern web applications." 
+    />
+    <meta name="theme-color" content="#121110" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Andreas Cristian Manik — Backend & Fullstack Engineer" />
+    <meta 
+      property="og:description" 
+      content="Backend & fullstack engineer building robust enterprise applications, high-performance services, and refined digital experiences." 
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
+
+    <!-- Google Fonts Preconnect & Imports (Playfair Display, Plus Jakarta Sans, Fira Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
+
+    <!-- Inline Style khusus Loader agar lansung aktif tanpa flashing -->
+    <style>
+      body {
+        margin: 0;
+        background-color: #121110; /* Dark Canvas Base Color */
+      }
+
+      .app-loader-container {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #121110;
+        color: #f5f5f4;
+        z-index: 9999;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .app-loader-ring {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .app-loader-ring::before,
+      .app-loader-ring::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1.5px solid transparent;
+      }
+
+      .app-loader-ring::before {
+        border-top-color: #d97706; /* Warm Amber Accent */
+        border-right-color: #d97706;
+        animation: loaderSpin 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+      }
+
+      .app-loader-ring::after {
+        border-bottom-color: #78716c; /* Warm Stone Accent */
+        border-left-color: #78716c;
+        animation: loaderSpin 1.8s ease-in-out infinite reverse;
+        opacity: 0.5;
+      }
+
+      .app-loader-monogram {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #f59e0b;
+      }
+
+      .app-loader-text {
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #a8a29e;
+        animation: loaderPulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes loaderSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes loaderPulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <app-root>
+      <div class="app-loader-container">
+        <div class="app-loader-ring">
+          <span class="app-loader-monogram">F</span>
+        </div>
+        <span class="app-loader-text">Loading Canvas...</span>
+      </div>
+    </app-root>
+  </body>
+</html>

@@ -1,0 +1,214 @@
+/* 1. Import font eksternal wajib di baris paling atas */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* 2. Gunakan Tailwind directives (v3) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Warm Organic Canvas BG */
+    @apply bg-[#fbf9f5] text-stone-800 dark:bg-[#121110] dark:text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-900 dark:selection:text-amber-200;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-[#f4f0ea] dark:bg-[#181715];
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-stone-300 dark:bg-stone-800 rounded-full hover:bg-amber-600/60 transition-colors;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28;
+  }
+
+  /* Judul Seksi: Kombinasi Serif & Estetika Abstrak */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    @apply text-3xl md:text-5xl font-normal text-stone-900 dark:text-stone-100 tracking-tight mb-3 italic;
+  }
+
+  /* Subtitle dengan indikator unik */
+  .section-subtitle {
+    @apply text-xs font-mono font-semibold text-amber-700 dark:text-amber-500 mb-2 tracking-widest uppercase;
+  }
+
+  /* Primary Button: Warm Terracotta Canvas Accent */
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-medium text-sm text-stone-50 dark:text-stone-950
+           bg-stone-900 hover:bg-amber-800 dark:bg-stone-100 dark:hover:bg-amber-400
+           transition-all duration-500 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-medium text-sm
+           border border-stone-300 dark:border-stone-800 bg-stone-100/40 dark:bg-stone-900/40 backdrop-blur-md
+           text-stone-800 dark:text-stone-200
+           hover:border-amber-600/60 dark:hover:border-amber-500/60 hover:text-amber-800 dark:hover:text-amber-400
+           hover:-translate-y-0.5 transition-all duration-500 shadow-sm;
+  }
+
+  /* Card bergaya Art Frame Frame / Minimalist Gallery */
+  .card {
+    @apply bg-white/70 dark:bg-stone-900/40 backdrop-blur-md rounded-3xl
+           border border-stone-200/80 dark:border-stone-800/60
+           hover:border-amber-500/40 dark:hover:border-amber-500/30
+           shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]
+           dark:shadow-2xl transition-all duration-500;
+  }
+
+  /* Tech Tag: Perpaduan Font Monospace Developer dengan Palette Warm Swatch */
+  .tech-tag {
+    @apply inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-mono font-medium
+           bg-stone-100/80 dark:bg-stone-800/60 text-stone-700 dark:text-amber-200/90
+           border border-stone-200/60 dark:border-stone-700/50
+           hover:bg-amber-50 dark:hover:bg-amber-950/30 hover:border-amber-300 dark:hover:border-amber-700/50
+           transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    font-family: 'Playfair Display', serif;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-800 via-stone-800 to-rose-900
+           dark:from-amber-200 dark:via-rose-300 dark:to-orange-400 italic;
+  }
+
+  /* ---- Intro Splash Screen ---- */
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #121110;
+    color: #f5f5f4;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+    will-change: opacity;
+  }
+  .intro-fading {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .intro-content {
+    text-align: center;
+    animation: introFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .intro-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #d97706;
+    margin: 0 0 0.75rem;
+  }
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5.5vw, 4.25rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: #f5f5f4;
+    margin: 0;
+  }
+  .intro-url {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    color: #a8a29e;
+    margin: 1.5rem 0 0;
+    min-height: 1.5em;
+  }
+  .intro-typed {
+    color: #f59e0b;
+  }
+  .intro-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-left: 4px;
+    background-color: #f59e0b;
+    animation: introBlink 1.2s infinite;
+  }
+  .intro-skip {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #78716c;
+    margin: 0;
+    cursor: pointer;
+  }
+  @keyframes introFadeUp {
+    0% { opacity: 0; transform: translateY(28px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes introBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Keyframes & Classes untuk Organic Floating */
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+
+  @keyframes floatReverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(10px) rotate(-2deg); }
+  }
+
+  /* Keyframes & Class untuk Experience Timeline Flow */
+  @keyframes lineGlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 200%; }
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: floatReverse 10s ease-in-out infinite;
+  }
+
+  .animate-line-glow {
+    background: linear-gradient(to bottom, transparent, rgba(217, 119, 6, 0.6), transparent);
+    background-size: 100% 200%;
+    animation: lineGlow 3s linear infinite;
+  }
+}
