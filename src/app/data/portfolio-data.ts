@@ -78,7 +78,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     "I'm a Fullstack Developer dedicated to engineering robust, high-performance web applications from end to end. Leveraging modern frameworks like Angular alongside solid Java backend systems, I strive to deliver clean code, seamless user experiences, and impactful software solutions.",
   location: 'Jakarta, Indonesia',
   email: 'cristian.andreas24@gmail.comm',
-  website: 'https://tianmanik.dev',
+  website: 'https://tianmanik.site',
   cvUrl: '#',
   social: [
     // { label: 'GitHub', url: 'https://github.com', icon: 'github' },
