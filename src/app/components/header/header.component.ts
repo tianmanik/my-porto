@@ -39,7 +39,7 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
             <span class="flex items-center gap-1.5 text-stone-900 dark:text-stone-100 font-mono text-xs font-semibold tracking-wider hidden sm:flex">
               <span class="text-amber-700 dark:text-amber-500">//</span>
               <span>{{ data.name }}</span>
-              <span class="text-stone-400 dark:text-stone-500 text-[11px]">.dev</span>
+              <span class="text-stone-400 dark:text-stone-500 text-[11px]">.site</span>
             </span>
           </a>
 

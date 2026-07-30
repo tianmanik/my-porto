@@ -26,7 +26,7 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
             <div>
               <div class="font-bold font-mono text-sm text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
                 <span>{{ data.name }}</span>
-                <span class="text-amber-700 dark:text-amber-400 text-xs">.dev</span>
+                <span class="text-amber-700 dark:text-amber-400 text-xs">.site</span>
               </div>
               <div class="text-xs font-mono text-stone-500 dark:text-stone-400">// {{ data.role }}</div>
             </div>
