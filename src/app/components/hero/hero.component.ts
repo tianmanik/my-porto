@@ -79,7 +79,7 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
                 <app-icon name="send" [size]="18" />
                 <span>Get in Touch</span>
               </a>
-              <a [href]="data.cvUrl" class="btn-secondary" download>
+              <a [href]="data.cvUrl" class="btn-secondary" download="Andreas_CV.pdf">
                 <app-icon name="download" [size]="18" />
                 <span>Download CV</span>
               </a>

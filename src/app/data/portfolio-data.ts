@@ -7,7 +7,7 @@
 export interface SocialLink {
   label: string;
   url: string;
-  icon: 'github' | 'linkedin' | 'mail' | 'twitter';
+  icon: 'github' | 'linkedin' | 'mail' | 'twitter' | 'instagram';
 }
 
 export interface NavItem {
@@ -79,11 +79,12 @@ export const PORTFOLIO_DATA: PortfolioData = {
   location: 'Jakarta, Indonesia',
   email: 'cristian.andreas24@gmail.comm',
   website: 'https://tianmanik.site',
-  cvUrl: '#',
+  cvUrl: 'assets/files/Andreas_CV.pdf',
   social: [
     // { label: 'GitHub', url: 'https://github.com', icon: 'github' },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/andreasmanik/', icon: 'linkedin' },
     { label: 'Email', url: 'mailto:cristian.andreas24@gmail.com', icon: 'mail' },
+    { label: 'Instagram', url: 'https://www.linkedin.com/in/andreasmanik/', icon: 'instagram' },
   ],
   nav: [
     { label: 'About', href: '#about' },

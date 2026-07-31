@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 import { IconComponent } from '../../shared/icon.component';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { PORTFOLIO_DATA } from '../../data/portfolio-data';
@@ -86,7 +87,7 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
           appRevealDelay="300"
           (ngSubmit)="submit()"
           class="lg:col-span-3 card p-6 md:p-8 space-y-5 relative overflow-hidden transition-all duration-300"
-          [class.opacity-60]="submitted()"
+          [class.opacity-60]="submitted() || loading()"
         >
           <!-- Floating Form Background Aura -->
           <div class="absolute -bottom-12 -right-12 w-40 h-40 bg-amber-600/10 rounded-full blur-3xl animate-float-slow pointer-events-none"></div>
@@ -150,9 +151,12 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
             ></textarea>
           </div>
 
-          <button type="submit" class="btn-primary w-full sm:w-auto relative z-10" [disabled]="submitted()">
+          <!-- Button Send Message dengan Penyesuaian State -->
+          <button type="submit" class="btn-primary w-full sm:w-auto relative z-10" [disabled]="submitted() || loading()">
             <app-icon name="send" [size]="18" />
-            <span>{{ submitted() ? 'Message Sent!' : 'Send Message' }}</span>
+            <span>
+              {{ loading() ? 'Sending...' : (submitted() ? 'Message Sent!' : 'Send Message') }}
+            </span>
           </button>
 
           @if (submitted()) {
@@ -173,12 +177,43 @@ import { PORTFOLIO_DATA } from '../../data/portfolio-data';
 export class ContactComponent {
   readonly data = PORTFOLIO_DATA;
   readonly submitted = signal(false);
+  readonly loading = signal(false);
+  readonly errorMessage = signal('');
 
   form = { name: '', email: '', message: '' };
 
-  submit(): void {
-    this.submitted.set(true);
-    this.form = { name: '', email: '', message: '' };
-    setTimeout(() => this.submitted.set(false), 5000);
+  // Ganti dengan kredensial dari dashboard EmailJS Anda
+  private readonly SERVICE_ID = 'service_ru8e0zj';
+  private readonly TEMPLATE_ID = 'template_y3ca8gi';
+  private readonly PUBLIC_KEY = 'IRBeXW5I2DaCca8tG';
+
+  async submit(): Promise<void> {
+    if (!this.form.name || !this.form.email || !this.form.message) return;
+
+    this.loading.set(true);
+    this.errorMessage.set('');
+
+    try {
+      await emailjs.send(
+        this.SERVICE_ID,
+        this.TEMPLATE_ID,
+        {
+          from_name: this.form.name,
+          from_email: this.form.email,
+          message: this.form.message,
+          to_email: this.data.email,
+        },
+        this.PUBLIC_KEY
+      );
+
+      this.submitted.set(true);
+      this.form = { name: '', email: '', message: '' };
+      setTimeout(() => this.submitted.set(false), 6000);
+    } catch (error) {
+      this.errorMessage.set('Gagal mengirim pesan. Silakan coba lagi.');
+      console.error('EmailJS Error:', error);
+    } finally {
+      this.loading.set(false);
+    }
   }
 }
